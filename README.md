@@ -31,18 +31,19 @@ switch (變數名稱){
     default://像是if 涵式的elas  
 }
 ```
-for迴圈
+# for迴圈
 
 for(執行式1;判斷式1;執行式3);
     執行式2;
 
-
-其過程: 執行執行式1--> 判斷判斷式1是否為正確 --> 正確:執行執行式2
+                                                                                                                                               \/-------------------------------------------------<-
+                            |                                                  |
+其過程: 執行執行式1--> 判斷判斷式1是否為正確 --> 正確:執行執行式2 --> 執行執行式3  
                                            --> 不正確:結束迴圈
 
 
 
-while迴圈    
+# while迴圈    
 while(判斷式){  
     執行式;    
 }    
@@ -114,33 +115,109 @@ int a[] = {12, 23, 45,};
 int a[列][行];
 ```  
 
+# 字串  
+跟陣列的用法雷同 只是輸入的是字元 不是數字  
+以下是字串的例子  
+```c
+char st[10]; //st字串有十的長度  
+    scanf("%s", st);//要求輸入字串的內容 並以字元的形式儲存在字串st裡  
+    printf("%s",st);//輸出字串內容  
+```
+需要注意的是在字串要存入多個字元時必須要留一個空字元給空格  
+如下  
+```c
+char st[] = {'h', 'e', 'l', 'l', 'o', '\0'};
+```
+# 結構(struct)    
+可以創建一個結構來概括多個變量
+例如 整數 字符 浮點數等等
+
+舉例來說要創建一個名為student的結構  
+裡面包含了需要的變量 像班級 座號 學號 名字  
+```c
+struct student{
+    int class; //班級  
+    int number;//座號  
+    int id;    //學號  
+    char name[10];  
+}  
+```
+當需要這個結構時 可以創建他的名字  
+```c  
+struct studen my_student;  
+```  
+如此一來我們就可以將這些變量賦值  
+```c
+my_student.class = 104;  
+my_student.number = 7;
+my_student.id = 119045;
+strcpy(my_student.name, "Ricky");
+```  
+當要輸出這些變量時
+```c  
+printf("class: %d\n", my_student.class);    
+printf("number: %d\n", my_student.number);  
+printf("id: %d\n", my_student.id);  
+printf("name: %s\n", my_student.name);  
+```
+如此一來就可以印出 my_student 結構中的變量值了  
+  
+總之結構是c語言中非常有用的 可以讓我們創建數據類型 方便的儲存和操作多個變量  
+# 列舉    
+列舉是一種用於定義一組值的資料類型  
+如下  
+```c  
+enum Weekday {
+    Monday,
+    Tuesday,
+    Wednesday,
+    Thursday,
+    Friday,
+    Saturday,
+    Sunday
+};  
+```  
+在這個例子中，定義了一個名為 Weekday的列舉
+包含了七個值 同時也可以使用typedef為列舉定義名子
+```c
+typedef enum {
+    Red,
+    Green,
+    Blue
+} Color;
+```
+在這個例子中定義了一個名為 Color 的列舉
+ 也可以用下列方式初始化列舉的其中一個值  
+```c
+enum Weekday today = Monday;
+```
+也可以使用 switch 對列舉進行比較  
+```c
+switch(today){
+    case Monday:
+        printf("Today is Monday");
+        break;
+    case Tuesday:
+        printf("Today is Tuesday");
+        break;
+    // 其他列舉值的情況
+}
+```  
+# 指標  
+在C語言中我們可以透過在一個變量錢加上(*)來  
+宣告他指項指標變量 如下:
+```C
+int *num;
+```  
+我們可以在指標內取址來初始化指標  
+如下:  
+```c  
+int i = 10;
+int *num = &i;
+``` 
+這裡將num的指標變量賦值 其內容為從i取的址
 
 
-這是一個使用冒泡排序法的 C 語言程式碼，該程式碼將輸入的整數數組進行排序，然後將排序後的數組輸出到控制台。
-
-以下是程式碼中各部分的詳細解釋：
-
-#include <stdio.h>：包含標準輸入輸出函數庫。
-
-int main() {...}：程式碼的主體函數。
-
-int n, t;：定義整型變數 n 和 t。
-
-scanf("%d", &n);：從標準輸入中讀取一個整數，並將其存儲在變量 n 中。
-
-int i[n];：定義一個長度為 n 的整數數組 i。
-
-for(int a = 1; a <= n; a++){...}：使用 for 循環逐個讀取輸入的整數，將其存儲在數組 i 中。
-
-for(int p = 1; p <= n - 1; p++){...}：使用兩個嵌套的 for 循環來實現冒泡排序法。外部循環控制排序的輪數，內部循環控制每輪比較的次數。
-
-if(i[r] > i[r+1]) {...}：如果相鄰的兩個數的順序不對，則交換它們的位置。
-
-for(int c = 1; c <= n; c++){...}：使用 for 循環依次輸出排序後的整數數組 i 中的元素。
-
-printf("%d ", i[c]);：以格式化的形式將每個數組元素依次輸出到控制台。
-
-總的來說，這段程式碼實現了一個簡單的整數排序功能，對於學習冒泡排序法和 C 語言基礎語法有很好的參考價值。
 
 
 
